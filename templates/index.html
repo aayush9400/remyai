@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Welcome, {{ user_info.email }}</h1>
+    <a href="/logout">Logout</a><br><br>
+    <h2>Your Current Calendar</h2>
+    {% for event in events %}
+        <p>{{ event.start }} - {{ event.end }}: {{ event.summary }}</p>
+    {% endfor %}
+    <form action="/calendar" method="post">
+        <button type="submit">Plan Meals</button>
+    </form>
+</body>
+</html>

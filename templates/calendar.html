@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Meal Plan Calendar</title>
+</head>
+<body>
+    <h1>Meal Plan Calendar</h1>
+    <p>Logged in as: {{ user_info.email }}</p>
+    <a href="/logout">Logout</a>
+    {% for event in events %}
+        <p>{{ event.start }} - {{ event.end }}: {{ event.summary }}</p>
+    {% endfor %}
+</body>
+</html>
