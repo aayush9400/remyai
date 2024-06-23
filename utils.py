@@ -223,6 +223,7 @@ class GoogleUtils():
         return start_of_week, end_of_week
 
 class Utils():
+    @staticmethod
     def render_homepage(events, user_info):
         html = f"<h1>Welcome, {user_info.get('email', 'Unknown')}!</h1>"
         html += '<a href="/logout">Logout</a><br><br>'
@@ -237,7 +238,7 @@ class Utils():
             </form>
         '''
         return html
-
+    @staticmethod
     def render_calendar(events, user_info):
         html = f"<h1>Meal Plan Calendar</h1>"
         html += f"<p>Logged in as: {user_info.get('email', 'Unknown')}</p>"
@@ -247,7 +248,7 @@ class Utils():
             end = event['end']['dateTime']
             html += f"<p>{start} - {end}: {event['summary']}</p>"
         return html
-    
+    @staticmethod  
     def credentials_to_dict(credentials):
         return {
             'token': credentials.token,
@@ -257,7 +258,7 @@ class Utils():
             'client_secret': credentials.client_secret,
             'scopes': credentials.scopes
         }
-
+    @staticmethod
     def credentials_from_dict(credentials_dict):
         return Credentials(
             token=credentials_dict['token'],

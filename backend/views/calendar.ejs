@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Calendar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column align-items-center" style="background-color: #f8f9fa;">
+    <div class="container mt-5">
+        <div class="text-center">
+            <h1>Welcome, <%= userInfo.email %>!</h1>
+            <a href="/user/logout" class="btn btn-danger mb-4">Logout</a>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Your Current Calendar</h2>
+                <ul class="list-group list-group-flush">
+                    <% if (events && events.length > 0) { %>
+                        <% events.forEach(event => { %>
+                            <li class="list-group-item">
+                                <% if (event.start.date && event.end.date) { %>
+                                    <%= event.start.date %> - <%= event.end.date %>: <%= event.summary %>
+                                <% } else { %>
+                                    <%= event.start.dateTime %> - <%= event.end.dateTime %>: <%= event.summary %>
+                                <% } %>
+                            </li>
+                        <% }); %>
+                    <% } else { %>
+                        <li class="list-group-item">No events found.</li>
+                    <% } %>
+                </ul>
+                <form action="/calendar/schedule" method="post" class="mt-4">
+                    <button type="submit" class="btn btn-primary">Plan Meals</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Chatbot</h5>
+            <div id="chat-history" class="mb-3" style="height: 300px; overflow-y: scroll; border: 1px solid #dee2e6; padding: 10px;">
+                <% chatHistory.forEach((message, index) => { %>
+                    <p><strong><%= message.user ? "You" : "Bot" %>:</strong> <%= message.text %></p>
+                <% }); %>
+            </div>
+            <form action="/chatbot/ask" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="userInput" placeholder="Type your answer..." aria-label="User input" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Send</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
