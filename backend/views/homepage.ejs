@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remy.ai Calendar</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body class="bg-light">
-    <div class="container mt-4">
-        <h1>Welcome, <%= userInfo.given_name %>!</h1>
+<div class="card">
+    <div class="card-body">
+        <h1>Welcome, <%= userInfo.email %>!</h1>
         <h2>Your Current Calendar</h2>
         <% if (events && events.length > 0) { %>
             <% events.forEach(event => { %>
-                <p><%= event.start.dateTime ? event.start.dateTime : event.start.date %> - <%= event.end.dateTime ? event.end.dateTime : event.end.date %>: <%= event.summary %></p>
-            <% }); %>
+                <p><%= event.start.dateTime || event.start.date %> - <%= event.end.dateTime || event.end.date %>: <%= event.summary %></p>
+            <% }) %>
         <% } else { %>
             <p>No events found.</p>
         <% } %>
@@ -22,9 +13,4 @@
             <button type="submit" class="btn btn-primary">Plan Meals</button>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/js/theme.js"></script>
-</body>
-</html>
+</div>

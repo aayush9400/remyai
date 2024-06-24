@@ -1,10 +1,10 @@
-/* Light mode styles */
 body {
     background-color: #f8f9fa;
     color: #212529;
+    font-family: 'Roboto', sans-serif;
 }
 
-.navbar {
+body.dark-mode {
     background-color: #343a40;
     color: #f8f9fa;
 }
@@ -12,21 +12,7 @@ body {
 .card {
     background-color: #ffffff;
     border: 1px solid #dee2e6;
-}
-
-.navbar-light .navbar-nav .nav-link {
-    color: #212529;
-}
-
-/* Dark mode styles */
-body.dark-mode {
-    background-color: #343a40;
-    color: #f8f9fa;
-}
-
-body.dark-mode .navbar {
-    background-color: #212529;
-    color: #f8f9fa;
+    border-radius: 0.5rem;
 }
 
 body.dark-mode .card {
@@ -34,6 +20,20 @@ body.dark-mode .card {
     border: 1px solid #6c757d;
 }
 
+.navbar-light .navbar-nav .nav-link {
+    color: #212529;
+}
+
 body.dark-mode .navbar-light .navbar-nav .nav-link {
     color: #f8f9fa;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+body.dark-mode .btn-secondary {
+    background-color: #adb5bd;
+    border-color: #adb5bd;
 }

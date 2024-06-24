@@ -1,7 +1,28 @@
 <div class="card">
-    <div class="card-body">
+    <div class="card-body text-center">
         <h1>Welcome to Remy.ai</h1>
         <p>Your smart kitchen assistant</p>
-        <a href="/user/login" class="btn btn-primary">Login with Google</a>
+        <% if (typeof user !== 'undefined' && user) { %>
+            <p>You are logged in as <%= user.email %></p>
+            <a href="/user/logout" class="btn btn-primary">Logout</a>
+        <% } else { %>
+            <p>Log in to access your personalized kitchen assistant features.</p>
+            <a href="/user/login" class="btn btn-primary">Login with Google</a>
+        <% } %>
+    </div>
+</div>
+<div class="card mt-4">
+    <div class="card-body">
+        <h2>About Remy.ai</h2>
+        <p>Remy.ai is your personal kitchen assistant that helps you manage your meals, plan your diet, and keep track of your pantry. Using advanced AI technologies, Remy.ai learns your preferences and provides personalized recommendations for your meals.</p>
+        <h3>Features:</h3>
+        <ul>
+            <li>Personalized meal planning</li>
+            <li>Dietary preferences and restrictions management</li>
+            <li>Pantry tracking and management</li>
+            <li>Calorie intake goals tracking</li>
+            <li>Interactive chatbot assistance</li>
+        </ul>
+        <p>Log in now to start using Remy.ai and transform your kitchen experience!</p>
     </div>
 </div>
