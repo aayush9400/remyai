@@ -1,5 +1,5 @@
 module.exports = {
-    clientSecretsFile: 'config/client_secret.json',
+    clientSecretsFile: 'config/client_secret_remy.json',
     port: process.env.PORT || 3000,
     pythonServiceUrl: process.env.PYTHON_SERVICE_URL || 'http://localhost:5001',
     scopes: [
