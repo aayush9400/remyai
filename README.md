@@ -90,7 +90,7 @@ remy.ai/ \
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/remy.ai.git
+git clone https://github.com/remyai-git/remy.ai.git
 cd remy.ai
 ```
 2. Install Node.js dependencies:
