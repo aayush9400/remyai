@@ -1,4 +1,4 @@
 *.json
-/__pycache__
+/services/__pycache__
 /backend/node_modules
 .env

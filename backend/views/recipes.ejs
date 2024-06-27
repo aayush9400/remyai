@@ -1,0 +1,95 @@
+<%- include('layout') %>
+<div class="container mt-4">
+    <h1>Swipe through these recipes</h1>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <% recipes.forEach(recipe => { %>
+                <div class="swiper-slide" data-recipe-id="<%= recipe.id %>">
+                    <div class="card">
+                        <img src="/images/<%= recipe.image %>" class="card-img-top" alt="<%= recipe.title %>">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= recipe.title %></h5>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+        <!-- Add Pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- Add Navigation -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+    <button id="complete-swiping" class="btn btn-primary mt-4">Go to Calendar</button>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<script>
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+    });
+
+    function handleSwipe(direction, recipeId) {
+        let action;
+        if (direction === 'left') {
+            action = 'reject';
+        } else if (direction === 'right') {
+            action = 'like';
+        } else if (direction === 'up') {
+            action = 'add';
+        }
+
+        fetch('/recipe/swipe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ recipeId, action })
+        }).then(response => {
+            if (response.ok) {
+                console.log(`Recipe ${recipeId} ${action}ed successfully`);
+            } else {
+                console.error('Failed to handle swipe action');
+            }
+        }).catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    const swiperContainer = document.querySelector('.swiper-container');
+    let touchstartX = 0;
+    let touchstartY = 0;
+
+    swiperContainer.addEventListener('touchstart', (e) => {
+        touchstartX = e.changedTouches[0].screenX;
+        touchstartY = e.changedTouches[0].screenY;
+    });
+
+    swiperContainer.addEventListener('touchend', (e) => {
+        const touchendX = e.changedTouches[0].screenX;
+        const touchendY = e.changedTouches[0].screenY;
+        const recipeId = document.querySelector('.swiper-slide-active').getAttribute('data-recipe-id');
+
+        if (touchendX < touchstartX - 50) {
+            handleSwipe('left', recipeId);
+        } else if (touchendX > touchstartX + 50) {
+            handleSwipe('right', recipeId);
+        } else if (touchendY < touchstartY - 50) {
+            handleSwipe('up', recipeId);
+        }
+    });
+
+    document.getElementById('complete-swiping').addEventListener('click', function() {
+        window.location.href = '/calendar';
+    });
+</script>

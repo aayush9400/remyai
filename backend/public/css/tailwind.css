@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-light text-dark;
+}
+
+body.dark {
+  @apply bg-dark text-light;
+}
+
+.card {
+  @apply bg-light border border-gray-200 shadow-md rounded-lg;
+}
+
+body.dark .card {
+  @apply bg-secondary border border-gray-700;
+}
+
+.navbar {
+  @apply bg-primary text-light;
+}
+
+body.dark .navbar {
+  @apply bg-dark text-accent;
+}
+
+.btn-primary {
+  @apply bg-accent text-white;
+}
+
+body.dark .btn-primary {
+  @apply bg-accent text-dark;
+}
