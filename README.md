@@ -108,9 +108,9 @@ SESSION_SECRET=your_session_secret
 ```
 
 4. Run the Node.js server:
-    ```bash 
-    npm start
-    ```
+```bash 
+npm start
+```
 
 ### Python Service Setup
 
