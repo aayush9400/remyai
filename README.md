@@ -73,7 +73,7 @@ remy.ai/ \
 │ ├── requirements.txt\
 │ └── .env\
 │\
-└── README.md\
+└── README.md
 
 
 ## Setup and Installation
